@@ -1,26 +1,49 @@
 function ShoppingCart() {
   // TODO: fetch items from server.
+
+  // prices are in GBP.
   this.items = ko.observableArray([{
     id: 1,
     name: 'Peas',
-    price: '1'
+    price: '0.95'
   }, {
     id: 2,
     name: 'Eggs',
-    price: '2'
+    price: '2.10'
   }, {
     id: 3,
     name: 'Milk',
-    price: '3'
+    price: '1.30'
   }, {
     id: 4,
     name: 'Beans',
-    price: '4'
+    price: '0.73'
   }]);
+
+  //TODO: fetch from server.
+  this.currencyMapping = {
+    'GBP': '&pound;',
+    'USD': '$'
+  }
+
+  this.currencies = ko.observableArray(['GBP', 'USD']);
+  this.currency = ko.observable(this.currencies()[0]);
+
+  this.currency.subscribe(function(newValue) {
+      this.currencySymbol(this.currencyMapping[newValue]);
+  }.bind(this));
+
+  this.currencySymbol = ko.observable(this.currencyMapping[this.currency()]);
 
   this.totalQuantity = ko.observable(0);
   this.totalPrice = ko.observable(0);
   this.cartItems = ko.observableArray();
+
+  // General function for formatting of prices
+
+  this.formatPrice = function(price) {
+      return this.currencySymbol() + price;
+  };
 
   // Add an item to basket.
   this.addToBasket = function(item) {
@@ -42,7 +65,6 @@ function ShoppingCart() {
       this.cartItems.remove(item);
       this.totalQuantity(this.totalQuantity() - item.qty());
   }.bind(this);
-
 
   // Calculate total price
   this.totalQuantity.subscribe(function() {
@@ -69,7 +91,10 @@ function ShoppingCart() {
   // Currency conversion via api
 
   // Currency switching
+  this.currencyChange = function(ev) {
+    console.log(ev);
 
+  }
 };
 
 ko.applyBindings(new ShoppingCart());

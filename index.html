@@ -4,13 +4,18 @@
   </head>
   <body>
     <div class="page" data-bind="scope: ShoppingCart">
+
+      <div class="currency-selector">
+        <select data-bind="value: currency, options: currencies"></select>
+      </div>
+
       <div class="product-grid" data-bind="foreach: items()">
         <div class="item">
           <div class="name">
             <span data-bind="text: $data.name"></span>
           </div>
           <div class="price">
-            <span data-bind="text: $data.price"></span>
+            <span data-bind="html: $parent.formatPrice($data.price)"></span>
           </div>
           <div class="actions">
             <a href="action add-to-basket" data-bind="click: $parent.addToBasket">Add to Basket</a>
@@ -27,7 +32,7 @@
             <span data-bind="text: $data.name"></span>
           </div>
           <div class="price">
-            <span data-bind="text: 'price: ' + $data.price"></span>
+            <span data-bind="html: 'price: ' + $parent.formatPrice($data.price)"></span>
           </div>
           <div class="qty">
             <span data-bind="text: 'qty: ' + $data.qty()"></span>
