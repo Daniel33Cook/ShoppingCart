@@ -18,6 +18,8 @@ function ShoppingCart() {
     price: '4'
   }]);
 
+  this.totalQuantity = ko.observable(0);
+  this.totalPrice = ko.observable(0);
   this.cartItems = ko.observableArray();
 
   // Add an item to basket.
@@ -32,11 +34,42 @@ function ShoppingCart() {
       item.qty = ko.observable(1);
       this.cartItems.push(item);
     }
+
+    this.totalQuantity(this.totalQuantity() + 1);
   }.bind(this);
 
   this.removeFromBasket = function(item) {
       this.cartItems.remove(item);
+      this.totalQuantity(this.totalQuantity() - item.qty());
   }.bind(this);
+
+
+  // Calculate total price
+  this.totalQuantity.subscribe(function() {
+    var total = 0;
+
+    var cartItems = this.cartItems();
+
+    console.log(cartItems);
+
+    for (key in cartItems) {
+      var cartItem = cartItems[key];
+
+
+      console.log(cartItem.price);
+
+      console.log(cartItem.qty());
+
+      total += (cartItem.price * cartItem.qty());
+    }
+
+    this.totalPrice(total);
+  }.bind(this));
+
+  // Currency conversion via api
+
+  // Currency switching
+
 };
 
 ko.applyBindings(new ShoppingCart());

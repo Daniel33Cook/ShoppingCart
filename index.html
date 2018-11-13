@@ -18,8 +18,9 @@
         </div>
       </div>
 
-      <h2>Shopping Cart</h2>
+      <h2>Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</h2>
 
+      <h3>Items</h3>
       <div class="cart-items" data-bind="foreach: cartItems()">
         <div class="item">
           <div class="name">
@@ -36,6 +37,9 @@
           </div>
         </div>
       </div>
+
+      <h3>Totals</h3>
+      <span data-bind="text: 'Grand Total: ' + totalPrice()"></span>
     </div>
     <script src="shopping-cart.js"></script>
   </body>
