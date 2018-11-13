@@ -18,15 +18,12 @@ function ShoppingCart() {
     price: '4'
   }]);
 
-  // A mapping of item ID -> key in observable array, to avoid unecessarry searchs.
-  this.idToKeyMapping = {};
-
   this.cartItems = ko.observableArray();
 
   // Add an item to basket.
   this.addToBasket = function(item) {
-    var index = this.getIndexIfItemExists(item.id);
-    if (index !== false) {
+    var index = this.cartItems.indexOf(item);
+    if (index !== -1) {
       // update cart item
       var cartItem = this.cartItems()[index];
       cartItem.qty(cartItem.qty() + 1);
@@ -34,22 +31,8 @@ function ShoppingCart() {
       // add new cart item.
       item.qty = ko.observable(1);
       this.cartItems.push(item);
-      this.idToKeyMapping[item.id] = this.cartItems().length - 1;
     }
   }.bind(this);
-
-  // If item exists in the cart then return the index.
-  this.getIndexIfItemExists = function(id) {
-    if (typeof this.idToKeyMapping[id] !== "undefined") {
-      return this.idToKeyMapping[id];
-    }
-    for (key in this.items) {
-      if (key === id) {
-        return this.items[key];
-      }
-    }
-    return false;
-  }
 
   this.removeFromBasket = function(item) {
       this.cartItems.remove(item);
