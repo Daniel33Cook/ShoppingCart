@@ -2,46 +2,58 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/vendor/normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
   </head>
   <body>
-    <div class="page" data-bind="scope: ShoppingCart">
+    <header>
+      <div id="logo"><span>Express</span></div>
       <div class="currency-selector">
         <select data-bind="value: currency, options: currencies"></select>
       </div>
-      <div class="product-grid" data-bind="foreach: items()">
-        <div class="item">
-          <div class="name">
-            <span data-bind="text: $data.name"></span>
-          </div>
-          <div class="price">
-            <span data-bind="html: $parent.formatPrice($data.price())"></span>
-          </div>
-          <div class="actions">
-            <a href="action add-to-basket" data-bind="click: $parent.addToBasket">Add to Basket</a>
-          </div>
-        </div>
-      </div>
-      <h2>Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</h2>
-      <h3>Items</h3>
-      <div class="cart-items" data-bind="foreach: cartItems()">
-        <div class="item">
-          <div class="name">
-            <span data-bind="text: $data.name"></span>
-          </div>
-          <div class="price">
-            <span data-bind="html: 'price: ' + $parent.formatPrice($data.price())"></span>
-          </div>
-          <div class="qty">
-            <span data-bind="text: 'qty: ' + $data.qty()"></span>
-          </div>
-          <div class="actions">
-            <a href="action remove" data-bind="click: $parent.removeFromBasket">Remove</a>
+    </header>
+    <main>
+      <div class="page" data-bind="scope: ShoppingCart">
+        <div class="product-grid" data-bind="foreach: items()">
+          <div class="item">
+            <div class="image">
+              <img data-bind="attr: {src: $data.img}">
+            </div>
+            <div class="name">
+              <strong data-bind="text: $data.name"></strong>
+            </div>
+            <div class="price">
+              <span data-bind="html: $parent.formatPrice($data.price())"></span>
+            </div>
+            <div class="actions">
+              <a href="#" class="action add-to-basket" data-bind="click: $parent.addToBasket">Add to Basket</a>
+            </div>
           </div>
         </div>
+        <h2>Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</h2>
+        <h3>Items</h3>
+        <div class="cart-items" data-bind="foreach: cartItems()">
+          <div class="item">
+            <div class="name">
+              <span data-bind="text: $data.name"></span>
+            </div>
+            <div class="price">
+              <span data-bind="html: 'price: ' + $parent.formatPrice($data.price())"></span>
+            </div>
+            <div class="qty">
+              <span data-bind="text: 'qty: ' + $data.qty()"></span>
+            </div>
+            <div class="actions">
+              <a href="action remove" data-bind="click: $parent.removeFromBasket">Remove</a>
+            </div>
+          </div>
+        </div>
+        <h3>Totals</h3>
+        <span data-bind="html: 'Grand Total: ' + formatPrice(totalPrice())"></span>
       </div>
-      <h3>Totals</h3>
-      <span data-bind="html: 'Grand Total: ' + formatPrice(totalPrice())"></span>
-    </div>
+    </main>
     <script src="shopping-cart.js"></script>
   </body>
 </html>

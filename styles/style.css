@@ -1,0 +1,33 @@
+header {
+  background: #7286A0;
+  padding: 20px;
+  text-align: center;
+}
+header #logo {
+  font-family: "Yesteryear", cursive;
+  font-size: 30px;
+  color: white;
+}
+
+.product-grid {
+  margin: 20px;
+}
+.product-grid .item {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.product-grid .item img {
+  max-width: 60%;
+}
+.product-grid .item .action {
+  color: white;
+  text-decoration: none;
+  background: #A3BFA8;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/*# sourceMappingURL=style.css.map */

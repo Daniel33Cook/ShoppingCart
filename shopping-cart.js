@@ -4,22 +4,26 @@ function ShoppingCart() {
     id: 1,
     name: 'Peas',
     basePrice: ko.observable('0.95'),
-    price: ko.observable('0.95')
+    price: ko.observable('0.95'),
+    img: 'images/peas.jpg'
   }, {
     id: 2,
     name: 'Eggs',
     basePrice: ko.observable('2.10'),
-    price: ko.observable('2.10')
+    price: ko.observable('2.10'),
+    img: 'images/eggs.jpg'
   }, {
     id: 3,
     name: 'Milk',
     basePrice: ko.observable('1.30'),
-    price: ko.observable('1.30')
+    price: ko.observable('1.30'),
+    img: 'images/milk.jpg'
   }, {
     id: 4,
     name: 'Beans',
     basePrice: ko.observable('0.73'),
-    price: ko.observable('0.73')
+    price: ko.observable('0.73'),
+    img: 'images/beans.jpg'
   }]);
 
   this.currencyMapping = {
