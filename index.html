@@ -5,11 +5,9 @@
   </head>
   <body>
     <div class="page" data-bind="scope: ShoppingCart">
-
       <div class="currency-selector">
         <select data-bind="value: currency, options: currencies"></select>
       </div>
-
       <div class="product-grid" data-bind="foreach: items()">
         <div class="item">
           <div class="name">
@@ -23,9 +21,7 @@
           </div>
         </div>
       </div>
-
       <h2>Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</h2>
-
       <h3>Items</h3>
       <div class="cart-items" data-bind="foreach: cartItems()">
         <div class="item">
@@ -43,7 +39,6 @@
           </div>
         </div>
       </div>
-
       <h3>Totals</h3>
       <span data-bind="html: 'Grand Total: ' + formatPrice(totalPrice())"></span>
     </div>

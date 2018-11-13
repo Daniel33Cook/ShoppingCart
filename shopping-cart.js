@@ -1,9 +1,6 @@
 function ShoppingCart() {
   // TODO: fetch items from server.
-
-  // prices are in GBP.
-
-  var itemData = [{
+  this.items = ko.observableArray([{
     id: 1,
     name: 'Peas',
     basePrice: ko.observable('0.95'),
@@ -23,11 +20,8 @@ function ShoppingCart() {
     name: 'Beans',
     basePrice: ko.observable('0.73'),
     price: ko.observable('0.73')
-  }];
+  }]);
 
-  this.items = ko.observableArray(itemData);
-
-  //TODO: fetch from server.
   this.currencyMapping = {
     'GBP': '&pound;',
     'USD': '$'
@@ -38,11 +32,9 @@ function ShoppingCart() {
 
   this.currency.subscribe(function(newValue) {
       this.currencySymbol(this.currencyMapping[newValue]);
-
       $.ajax({
         url : 'http://apilayer.net/api/live?access_key=f4f8f80bf2bf594b04dfc41aa0b85ee4&currencies=' + newValue + '&source=GBP&format=1',
         success: function(response) {
-
           if (response.quotes) {
             var currencyRate = response.quotes['GBP' + newValue];
             if (typeof currencyRate !== 'undefined') {
@@ -104,15 +96,6 @@ function ShoppingCart() {
   };
 
   this.totalQuantity.subscribe(this.calculateTotalPrice.bind(this));
-
-
-  // Currency conversion via api
-
-  // Currency switching
-  this.currencyChange = function(ev) {
-    console.log(ev);
-
-  }
 };
 
 ko.applyBindings(new ShoppingCart());
