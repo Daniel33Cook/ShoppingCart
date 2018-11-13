@@ -36,7 +36,6 @@ function ShoppingCart() {
       this.cartItems.push(item);
       this.idToKeyMapping[item.id] = this.cartItems().length - 1;
     }
-
   }.bind(this);
 
   // If item exists in the cart then return the index.
@@ -53,8 +52,8 @@ function ShoppingCart() {
   }
 
   this.removeFromBasket = function(item) {
-
-  }
+      this.cartItems.remove(item);
+  }.bind(this);
 };
 
 ko.applyBindings(new ShoppingCart());
