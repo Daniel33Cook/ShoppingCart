@@ -1,5 +1,6 @@
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
   </head>
   <body>
@@ -15,7 +16,7 @@
             <span data-bind="text: $data.name"></span>
           </div>
           <div class="price">
-            <span data-bind="html: $parent.formatPrice($data.price)"></span>
+            <span data-bind="html: $parent.formatPrice($data.price())"></span>
           </div>
           <div class="actions">
             <a href="action add-to-basket" data-bind="click: $parent.addToBasket">Add to Basket</a>
@@ -32,7 +33,7 @@
             <span data-bind="text: $data.name"></span>
           </div>
           <div class="price">
-            <span data-bind="html: 'price: ' + $parent.formatPrice($data.price)"></span>
+            <span data-bind="html: 'price: ' + $parent.formatPrice($data.price())"></span>
           </div>
           <div class="qty">
             <span data-bind="text: 'qty: ' + $data.qty()"></span>
@@ -44,7 +45,7 @@
       </div>
 
       <h3>Totals</h3>
-      <span data-bind="text: 'Grand Total: ' + totalPrice()"></span>
+      <span data-bind="html: 'Grand Total: ' + formatPrice(totalPrice())"></span>
     </div>
     <script src="shopping-cart.js"></script>
   </body>
