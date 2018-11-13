@@ -3,7 +3,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
   </head>
   <body>
-    <div data-bind="text: 'knockout is working'"></div>
+    <div class="page" data-bind="scope: ShoppingCart">
+      <div class="product-grid" data-bind="foreach: items()">
+        <div class="item">
+          <div class="name">
+            <span data-bind="text: $data.name"></span>
+          </div>
+          <div class="price">
+            <span data-bind="text: $data.price"></span>
+          </div>
+          <div class="actions">
+            <a href="action add-to-basket">Add to Basket</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="totals">
+
+      </div>
+    </div>
     <script src="shopping-cart.js"></script>
   </body>
 </html>
