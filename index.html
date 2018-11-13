@@ -26,10 +26,13 @@
             <span data-bind="text: $data.name"></span>
           </div>
           <div class="price">
-            <span data-bind="text: $data.price"></span>
+            <span data-bind="text: 'price: ' + $data.price"></span>
+          </div>
+          <div class="qty">
+            <span data-bind="text: 'qty: ' + $data.qty()"></span>
           </div>
           <div class="actions">
-            <a href="action remove">Remove</a>
+            <a href="action remove" data-bind="click: $parent.removeFromBasket">Remove</a>
           </div>
         </div>
       </div>
