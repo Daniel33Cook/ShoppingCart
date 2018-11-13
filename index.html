@@ -13,13 +13,25 @@
             <span data-bind="text: $data.price"></span>
           </div>
           <div class="actions">
-            <a href="action add-to-basket">Add to Basket</a>
+            <a href="action add-to-basket" data-bind="click: $parent.addToBasket">Add to Basket</a>
           </div>
         </div>
       </div>
 
-      <div class="totals">
+      <h2>Shopping Cart</h2>
 
+      <div class="cart-items" data-bind="foreach: cartItems()">
+        <div class="item">
+          <div class="name">
+            <span data-bind="text: $data.name"></span>
+          </div>
+          <div class="price">
+            <span data-bind="text: $data.price"></span>
+          </div>
+          <div class="actions">
+            <a href="action remove">Remove</a>
+          </div>
+        </div>
       </div>
     </div>
     <script src="shopping-cart.js"></script>
