@@ -37,9 +37,9 @@
           </div>
         </div>
         <div class="minicart">
-          <div class="toggle" data-bind="click: toggleMinicart">Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</div>
+          <div class="toggle" data-bind="click: toggleMinicart"><strong>Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</strong><span data-bind="html: ' ' + formatPrice(totalPrice())"></span></div>
           <div class="content">
-            <h3>Items</h3>
+            <h4>Items</h4>
             <div class="cart-items" data-bind="foreach: cartItems()">
               <div class="item">
                 <div class="name">
@@ -56,7 +56,7 @@
                 </div>
               </div>
             </div>
-            <h3>Totals</h3>
+            <h4>Totals</h4>
             <span data-bind="html: 'Grand Total: ' + formatPrice(totalPrice())"></span>
           </div>
         </div>
