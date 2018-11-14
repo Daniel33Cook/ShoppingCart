@@ -115,7 +115,7 @@ function ShoppingCart() {
   this.totalQuantity.subscribe(this.calculateTotalPrice.bind(this));
 
   this.toggleMinicart = function() {
-      $('.minicart .content').toggle();
+      $('.minicart .content').slideToggle();
       $('body').toggleClass('minicart-open');
   };
 };
