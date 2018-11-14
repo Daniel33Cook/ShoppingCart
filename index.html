@@ -42,6 +42,7 @@
         <div class="minicart">
           <div class="toggle" data-bind="click: toggleMinicart"><strong><i class="fas fa-shopping-cart"></i> Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</strong><span data-bind="html: ' ' + formatPrice(totalPrice())"></span> <i class="fas fa-chevron-up"></i><i class="fas fa-chevron-down"></i></div>
           <div class="content">
+            <!-- ko if: cartItems().length > 0 -->
             <h4>Items</h4>
             <div class="cart-items" data-bind="foreach: cartItems()">
               <div class="item">
@@ -61,6 +62,10 @@
             </div>
             <h4>Totals</h4>
             <span data-bind="html: 'Grand Total: ' + formatPrice(totalPrice())"></span>
+            <!-- /ko  -->
+            <!-- ko if: cartItems().length === 0 -->
+            <p>Your cart is empty.</p>
+            <!-- /ko  -->
           </div>
         </div>
       </div>
