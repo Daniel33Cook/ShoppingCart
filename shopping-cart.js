@@ -109,6 +109,7 @@ function ShoppingCart() {
 
   this.toggleMinicart = function() {
       $('.minicart .content').toggle();
+      $('body').toggleClass('minicart-open');
   };
 };
 

@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
   <body>
     <header>
@@ -39,7 +40,7 @@
           </div>
         </div>
         <div class="minicart">
-          <div class="toggle" data-bind="click: toggleMinicart"><strong>Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</strong><span data-bind="html: ' ' + formatPrice(totalPrice())"></span></div>
+          <div class="toggle" data-bind="click: toggleMinicart"><strong><i class="fas fa-shopping-cart"></i> Shopping Cart (<span data-bind="text: totalQuantity()"></span>)</strong><span data-bind="html: ' ' + formatPrice(totalPrice())"></span> <i class="fas fa-chevron-up"></i><i class="fas fa-chevron-down"></i></div>
           <div class="content">
             <h4>Items</h4>
             <div class="cart-items" data-bind="foreach: cartItems()">

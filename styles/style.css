@@ -92,6 +92,20 @@ main {
   display: none;
 }
 
+.minicart-open .minicart .toggle .fa-chevron-up {
+  display: none;
+}
+.minicart-open .minicart .toggle .fa-chevron-down {
+  display: inline-block;
+}
+
+.minicart .toggle {
+  cursor: pointer;
+}
+.minicart .toggle .fa-chevron-down {
+  display: none;
+}
+
 @media only screen and (min-width: 365px) {
   .product-grid {
     display: flex;
