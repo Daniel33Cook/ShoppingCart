@@ -26,6 +26,8 @@ function ShoppingCart() {
     img: 'images/beans.jpg'
   }]);
 
+  this.cartItems = ko.observableArray();
+
   this.currencyMapping = {
     'GBP': '&pound;',
     'USD': '$'
@@ -42,10 +44,8 @@ function ShoppingCart() {
           if (response.quotes) {
             var currencyRate = response.quotes['GBP' + newValue];
             if (typeof currencyRate !== 'undefined') {
-              for (key in this.items()) {
-                var item = this.items()[key];
-                item['price'](item['basePrice']() * currencyRate);
-              }
+              this.calculateItemPrices(this.items(), currencyRate);
+              this.calculateItemPrices(this.cartItems(), currencyRate);
               this.calculateTotalPrice();
             }
           }
@@ -57,7 +57,6 @@ function ShoppingCart() {
 
   this.totalQuantity = ko.observable(0);
   this.totalPrice = ko.observable(0);
-  this.cartItems = ko.observableArray();
 
   // General function for formatting of prices
   this.formatPrice = function(price) {
@@ -97,6 +96,13 @@ function ShoppingCart() {
     }
 
     this.totalPrice(total);
+  };
+
+  this.calculateItemPrices = function(items, currencyRate) {
+    for (key in items) {
+      var item = items[key];
+      item['price'](item['basePrice']() * currencyRate);
+    }
   };
 
   this.totalQuantity.subscribe(this.calculateTotalPrice.bind(this));
