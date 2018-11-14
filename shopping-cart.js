@@ -52,7 +52,10 @@ function ShoppingCart() {
           }
 
           alert('Sorry, something went wrong whilst tryng to change currency. Please reload the page and try again.');
-        }.bind(this)
+        }.bind(this),
+        error: function() {
+          alert('Sorry, something went wrong whilst tryng to change currency. Please reload the page and try again.');
+        }
       });
   }.bind(this));
 
