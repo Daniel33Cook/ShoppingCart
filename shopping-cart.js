@@ -30,10 +30,11 @@ function ShoppingCart() {
 
   this.currencyMapping = {
     'GBP': '&pound;',
-    'USD': '$'
+    'USD': '$',
+    'EUR': '&euro;'
   }
 
-  this.currencies = ko.observableArray(['GBP', 'USD']);
+  this.currencies = ko.observableArray(['GBP', 'USD', 'EUR']);
   this.currency = ko.observable(this.currencies()[0]);
 
   this.currency.subscribe(function(newValue) {
