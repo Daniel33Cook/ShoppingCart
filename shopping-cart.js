@@ -37,18 +37,21 @@ function ShoppingCart() {
   this.currency = ko.observable(this.currencies()[0]);
 
   this.currency.subscribe(function(newValue) {
-      this.currencySymbol(this.currencyMapping[newValue]);
       $.ajax({
         url : 'http://apilayer.net/api/live?access_key=f4f8f80bf2bf594b04dfc41aa0b85ee4&currencies=' + newValue + '&source=GBP&format=1',
         success: function(response) {
           if (response.quotes) {
             var currencyRate = response.quotes['GBP' + newValue];
             if (typeof currencyRate !== 'undefined') {
+              this.currencySymbol(this.currencyMapping[newValue]);
               this.calculateItemPrices(this.items(), currencyRate);
               this.calculateItemPrices(this.cartItems(), currencyRate);
               this.calculateTotalPrice();
+              return;
             }
           }
+
+          alert('Sorry, something went wrong whilst tryng to change currency. Please reload the page and try again.');
         }.bind(this)
       });
   }.bind(this));
